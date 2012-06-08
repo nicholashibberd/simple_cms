@@ -1,0 +1,21 @@
+<div class="top_right_controls">
+	<%= link_to 'New Nav Item', new_nav_menu_nav_item_path(@nav_menu), :class => 'btn btn-info' %>
+</div>
+
+<div class="page_header">
+	<h1><%= @nav_menu.name %> Links</h1>
+</div>
+
+<section class="page_content">
+	<div class="field" id="sortable_nav_items">
+		<% @nav_menu.nav_items.asc(:position).each do |nav_item| %>
+			<div class="index_item" id="navitem_<%= nav_item.id %>">
+				<div class="controls">
+				  <%= link_to 'Delete', nav_menu_nav_item_path(@nav_menu, nav_item), :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-danger' %>
+				  <%= link_to 'Edit', edit_nav_menu_nav_item_path(@nav_menu, nav_item), :class => 'btn btn-warning' %>			
+				</div>
+				<%= link_to nav_item.name, edit_nav_menu_nav_item_path(@nav_menu, nav_item) %>
+			</div>
+		<% end %>
+	</div>
+</section>

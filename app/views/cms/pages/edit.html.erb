@@ -1,0 +1,11 @@
+<div class="top_right_controls">
+	<%= link_to 'View page', host_page_path(@page), :class => 'btn' %>
+</div>
+
+<div class="page_header">
+	<h1><%= @page.name %></h1>
+</div>
+
+<section class="page_content">
+	<%= render 'form' %>
+</section>

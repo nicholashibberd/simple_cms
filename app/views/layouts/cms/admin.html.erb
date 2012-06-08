@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cms</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "cms" %>
+  <%= csrf_meta_tags %>
+</head>
+<body id="admin">
+		
+	<div id="envelope">
+		<div id="background">
+			<div id="background_header">
+			</div>
+			<div id="background_nav">
+			</div>
+		</div>	
+		<!-- Flash message goes here -->
+		<% if !flash.blank? %>
+	    <div id='flash'>
+	      <ul id='flash_list'>
+	        <% flash.each do |key, value| %>
+	          <li class="flash_item <%= key %>"><%= value %></li>
+	        <% end %>
+	      </ul>
+	    </div>
+	  <% end %>
+		<% if current_user %>
+			<div id="status_bar" class="signed_in">			
+				<%= current_user.name %> &nbsp; <%= link_to "Sign out", signout_path, :id => 'signout_link' %>
+			</div>
+		<% else %>
+			<div id="status_bar">			
+				<%= link_to 'Sign in', signin_path %>
+			</div>							
+		<% end %>
+		<div id="admin_header">			
+	    <h1>Admin</h1>
+			<%= render 'layouts/cms/top_nav' %>			
+		</div> <!-- #admin_header -->
+	
+    <div id="<%= current_controller %>_<%= request[:action] %>_content" class="content">		
+			<%= yield %>
+    </div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<%= form_for(@photo, {:html => {:multipart => true}}.merge(form_action_path(@group, @photo))) do |f| %>
+	<%= f.hidden_field :group_id, :value => @photo.group_id ||= @group_id %>	
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :caption %>
+    <%= f.text_field :caption %>
+  </div>
+  <div class="field">
+    <%= f.label :link %>
+    <%= f.text_field :link %>
+  </div>
+	<div class="field">
+    <%= f.label :cover_image %>
+    <%= f.file_field :cover_image %>
+  </div>
+	<div class="field">
+    <%= f.label :photo_type %>
+    <%= f.select :photo_type, options_for_select([['Content', 'content'], ['Background Image', 'background_image']], @photo.photo_type) %>
+  </div>
+	<% unless @photo.new_record? %>
+	 	<div>
+			<%= image_tag @photo.cover_image.thumb('x100').url %>
+		</div>
+	<% end %>
+
+	<div class="button confirm_button">
+  	<%= f.submit :class => 'btn btn-success' %>
+	</div>
+<% end %>

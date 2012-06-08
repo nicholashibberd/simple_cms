@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @nav_item.name %>
+</p>
+
+<p>
+  <b>Target:</b>
+  <%= @nav_item.link_target %>
+</p>
+
+
+<%= link_to 'Edit', edit_nav_item_path(@nav_item) %>

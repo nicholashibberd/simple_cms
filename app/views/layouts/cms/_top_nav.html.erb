@@ -1,0 +1,9 @@
+<% nav_menu = NavMenu.admin_nav %>
+
+<% if nav_menu %>
+	<nav>
+		<% nav_menu.nav_items.each do |nav_item| %>
+			<%= admin_nav_link(nav_item) %>
+		<% end %>
+	</nav>	
+<% end %>

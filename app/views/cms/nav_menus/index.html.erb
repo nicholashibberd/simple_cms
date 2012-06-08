@@ -1,0 +1,19 @@
+<div class="top_right_controls">
+	<%= link_to 'New Navigation Menu', new_nav_menu_path, :class => 'btn btn-info' %>
+</div>
+
+<div class="page_header">
+	<h1 class="header">Navigation Menus</h1>
+</div>
+
+<section class="page_content">
+	<% @nav_menus.each do |nav_menu| %>
+		<div class="index_item page_index_item">
+			<div class="controls">
+				<%= link_to 'Delete', nav_menu_path(nav_menu), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-danger' %>			
+				<%= link_to 'Edit', nav_menu_nav_items_path(nav_menu), :class => 'btn btn-warning' %>			
+			</div>
+			<%= link_to nav_menu.name, nav_menu_nav_items_path(nav_menu) %>
+		</div>
+	<% end %>
+</section>

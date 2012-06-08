@@ -1,0 +1,20 @@
+@mixin rounded($radius: 3px) {
+  border-radius:$radius;
+  -moz-border-radius:$radius;
+  -webkit-border-radius:$radius;
+}
+
+@mixin shadowed($shadow) {
+  box-shadow:$shadow;
+  -moz-box-shadow:$shadow;
+  -webkit-box-shadow:$shadow;
+}
+
+@mixin gradiented($color_from, $color_to, $percentage: 100%) {
+  background-color:$color_from;
+  background:-webkit-gradient(linear, 0% 0%, 0% $percentage, from($color_from), to($color_to));
+  background:-moz-linear-gradient($percentage $percentage 90deg, $color_to, $color_from);
+  background:-o-linear-gradient($color_from, $color_to);
+  background:linear-gradient($color_from, $color_to, $percentage);
+  background:-ms-linear-gradient($color_from, $color_to, $percentage);
+}

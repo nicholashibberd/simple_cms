@@ -1,0 +1,12 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  date:
+    formats:
+      default: "%d-%m-%Y"
+      short: "%d %b '%y"
+      long: "%A %d %B %Y"
+      month_year: "%m-%Y"
+      month_name_year: "%B %Y"
+      month_name: "%B"

@@ -1,0 +1,23 @@
+<%= form_for(@user) do |f| %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+  <% if @user.new_record? %>
+		<div class="field">
+	    <%= f.label :password %>
+	    <%= f.password_field :password %>
+	  </div>
+		<div class="field">
+	    <%= f.label :confirm_password %>
+	    <%= f.password_field :confirm_password %>
+	  </div>
+	<% end %>
+  <div class="button confirm_button">
+    <%= f.submit :class => 'btn btn-success' %>
+  </div>
+<% end %>
