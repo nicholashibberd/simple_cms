@@ -1,0 +1,3 @@
+<% @page.widgets.by_region(region).each do |widget| %>
+	<%= render "cms/widgets/show/#{widget.widget_type}", :widget => widget %>
+<% end %>

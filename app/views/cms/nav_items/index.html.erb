@@ -19,3 +19,20 @@
 		<% end %>
 	</div>
 </section>
+
+<%= javascript_tag do %>
+  $('#sortable_nav_items').sortable(
+  	{	axis: 'y', 
+  		dropOnEmpty:false, 
+     	items: '.index_item',
+     	scroll: true,
+      update: function(){
+        $.ajax({
+       	 type: 'post', 
+         data: $('#sortable_nav_items').sortable('serialize') + '&id=<%= @nav_menu.id-%>',
+         dataType: 'script', 
+         url: '/cms/nav_menus/order_nav_items'
+			  })
+      }	
+	})
+<% end %>

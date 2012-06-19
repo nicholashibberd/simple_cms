@@ -8,4 +8,31 @@
 
 <section class="page_content">
 	<%= render 'form' %>
+	
+	<h1>Page Content</h1>
+	<%= render "layouts/#{@page.layout}" %>
 </section>
+
+<%= javascript_tag do %>
+	var regions = $('.admin_region');
+  regions.each(function(index) {
+		makeSortable($(this));
+	});
+	
+	function makeSortable(element) {
+		element.sortable(
+	  	{	axis: 'y', 
+	  		dropOnEmpty:false, 
+	     	items: '.admin_widget',
+	     	scroll: true,
+	      update: function(){
+	        $.ajax({
+	       	 type: 'post', 
+	         data: element.sortable('serialize') + '&page_id=<%= @page.id-%>' + '&region=' + element.attr('id'),
+	         dataType: 'script', 
+	         url: '/cms/order_widgets'
+				  })
+	      }	
+		})
+	}
+<% end %>

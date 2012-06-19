@@ -1,0 +1,23 @@
+<div class="top_right_controls">
+	<%= link_to 'New Image', new_image_path, :class => 'btn btn-info' %>
+</div>
+
+<div class="page_header">
+	<h1>Images</h1>
+</div>
+
+<section class="page_content">
+	<div id="sortable_images">
+		<% @images.asc(:position).each do |image| %>
+			<div class="index_item image_index_item" id="image_<%= image.id %>">
+				<div class="controls">
+					<%= link_to 'Delete', image_path(image), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+					<%= link_to 'Edit', edit_image_path(image), :class => 'btn btn-warning' %>				
+				</div>
+				<div class="images_index_image">
+					<%= image_tag image.cover_image.thumb('x150').url %>
+				</div>
+			</div>
+		<% end %>
+	</div>
+</section>

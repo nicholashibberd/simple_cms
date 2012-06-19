@@ -1,0 +1,8 @@
+<div class="page_header">
+	<h1>Edit widget</h1>
+</div>
+
+<section class="page_content">
+	<%= render "cms/widgets/form" %>
+	<%= link_to 'Delete', page_widget_path(@page, @widget), :method => :delete, :class => 'btn btn-danger' %>
+</section>

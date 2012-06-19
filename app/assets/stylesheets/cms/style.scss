@@ -117,6 +117,21 @@ body#admin {
 		margin: auto;
 		z-index: 1;
 	}
+	
+	.admin_region {
+		background: #eee;
+		padding: 15px;
+		margin-bottom: 30px;
+		
+		.admin_widget { background: #fff; padding: 10px; }
+		
+		.admin_add_widget_controls { 
+			margin-top: 10px;
+			height: 30px;
+			
+			a { float: left; margin-right: 10px; display: block; }
+		}
+	}
 
 	
 	/*****************************
@@ -250,20 +265,20 @@ body#admin {
 	Photos
 	*****************************************************/
 
-	.photos_index_image {
+	.images_index_image {
 		float: left;
 		margin-right: 30px;
 	}
 
-	.photos_index_image img {
+	.images_index_image img {
 		height: 60px;
 	}
 
-	.photo_index_item {
+	.image_index_item {
 		height: 60px;
 	}
 	
-	.photo_widget_form_item { float: left; margin-right: 30px; }
+	.image_widget_form_item { float: left; margin: 0 30px 30px 0; }
 
 	/****************************************************
 	Flash

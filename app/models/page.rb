@@ -9,6 +9,7 @@ class Page
   field :layout  
 
   has_and_belongs_to_many :photos  
+  has_many :widgets
   before_create :generate_slug
   validates_presence_of :name
   
@@ -32,5 +33,19 @@ class Page
     params_with_photos = page_type_params[:photo_ids] ? page_type_params : page_type_params.merge(:photo_ids => [])
   	update_attributes(params_with_photos)
   end
-      
+  
+  def add_widget(params)
+    widget_type = params[:widget_type]
+    widget_class = widget_type.classify.constantize
+    widgets << widget_class.new(params[widget_type])
+  end
+  
+  def order_widgets(params)
+    widgets.by_region(params['region']).each do |widget|
+      widget.position = params['widget'].index(widget.id.to_s) + 1
+      widget.save!
+    end
+  end
+  
+  
 end

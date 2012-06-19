@@ -38,6 +38,13 @@ module Cms
   		page.destroy
       flash[:error] = "Page successfully deleted"  		
   		redirect_to pages_path
-  	end    
+  	end   
+  	
+  	def order_widgets
+  		page = Page.find(params[:page_id])
+  		page.order_widgets(params)
+  		render :nothing => true
+    end
+     
   end
 end

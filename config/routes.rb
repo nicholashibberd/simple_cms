@@ -1,6 +1,8 @@
 Cms::Engine.routes.draw do
-  resources :pages
-  resources :photos
+  resources :pages do
+    resources :widgets
+  end
+  resources :images
   resources :nav_menus do
     resources :nav_items
   end
@@ -18,6 +20,7 @@ Cms::Engine.routes.draw do
   match '/signout', :to => 'sessions#destroy', :as => :signout
   
   post "/nav_menus/order_nav_items", :to => 'nav_menus#order_nav_items', :as => :order_nav_items
+  post '/order_widgets', :to => 'pages#order_widgets', :as => :order_widgets
 
   # Routes in the host application
   get '../pages/:id', :to => 'pages#show', :as => :host_page

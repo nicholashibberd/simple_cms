@@ -1,0 +1,28 @@
+<div class="field">
+  <%= f.label :caption %>
+  <%= f.text_field :caption %>
+</div>
+
+<div class="field">
+  <%= f.label :display_in_lightbox %>
+  <%= f.select :display_in_lightbox, options_for_select([['Yes', true], ['No', false]], widget.display_in_lightbox) %>
+</div>
+
+<div class="field">
+  <%= f.label :width %>
+  <%= f.text_field :width %>
+</div>
+
+<div class="field">
+  <%= f.label :choose_image %>
+	<% Image.all.each do |image| %>
+   <div class="image_widget_form_item">
+		<div class="image_widget_form_item_details">
+			<%= radio_button_tag 'image_widget[image_id]', image.id, widget.image == image %>
+	    <%= label_tag image.name %>			
+		</div>
+		<%= image_tag image.cover_image.thumb('x100').url %><br />
+   </div>
+	<% end %>
+	<div class="spacer"></div>
+</div>

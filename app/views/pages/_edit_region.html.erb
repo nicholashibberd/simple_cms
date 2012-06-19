@@ -1,0 +1,14 @@
+<div class="admin_region" id="<%= region %>">
+	<h1><%= region.titleize %></h1>
+	<% @page.widgets.by_region(region).each do |widget| %>
+		<div class="admin_widget <%= region %>_widget" id="widget_<%= widget.id %>">
+			<%= render "cms/widgets/show/#{widget.widget_type}", :widget => widget %>
+			<%= link_to 'Edit', edit_page_widget_path(@page, widget), :class => 'btn btn-warning' %>
+		</div>
+	<% end %>
+
+	<div class="admin_add_widget_controls">
+		<%= link_to 'Add Text', new_page_widget_path(@page, :widget_type => 'text_widget', :region => region), :class => 'btn btn-info' %>
+		<%= link_to 'Add Image', new_page_widget_path(@page, :widget_type => 'image_widget', :region => region), :class => 'btn btn-info' %>
+	</div>
+</div>

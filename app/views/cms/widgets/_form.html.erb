@@ -1,0 +1,8 @@
+<%= form_for @widget, {:url => path_for_widget(@page, @widget)} do |f| %>
+	<%= hidden_field_tag 'widget_type', @widget.widget_type %>
+	<%= f.hidden_field :region, :value => params['region'] if params['region'] %>
+	<%= render :partial => "cms/widgets/form/#{@widget.widget_type}", :locals => {:f => f, :widget => @widget}  %>
+  <div>
+    <%= f.submit :class => 'btn btn-success' 'Save', :class => 'btn btn-success' %>
+  </div>
+<% end %>
