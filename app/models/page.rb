@@ -8,7 +8,6 @@ class Page
   field :template
   field :layout  
 
-  has_and_belongs_to_many :photos  
   has_many :widgets
   before_create :generate_slug
   validates_presence_of :name
